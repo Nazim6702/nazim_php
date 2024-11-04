@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma Collection de Films</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href=".css">
 </head>
 <body>
 
     <header>
-        <h1>Bienvenue dans Ma Collection de Films</h1>
+        <h1>Filmoteca</h1>
         <nav>
             <a href="#">Accueil</a>
-            <a href="ajouterFilm.html">Ajouter un Film</a>
-            <a href="#">Liste des Films</a>
+            <a href="ajouterFilm.php">Ajouter un Film</a>
+            <a href="listeFilms.php">Liste des Films</a>
             <a href="#">Contact</a>
         </nav>
     </header>
@@ -25,7 +25,6 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Ma Collection de Films. Tous droits réservés.</p>
     </footer>
 
 </body>
