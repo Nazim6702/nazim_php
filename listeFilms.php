@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="fr">
+=======
+<html>
+>>>>>>> 1296d74575dfb16d24026253d123211ba0b0b4c4
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +15,11 @@
     <header>
         <h1>Ma Collection de Films</h1>
         <nav>
+<<<<<<< HEAD
             <a href="index.html">Accueil</a>
+=======
+            <a href="index.php">Accueil</a>
+>>>>>>> 1296d74575dfb16d24026253d123211ba0b0b4c4
             <a href="ajouter_film.html">Ajouter un Film</a>
             <a href="liste_films.php">Liste des Films</a>
             <a href="#">Contact</a>
@@ -30,7 +38,11 @@
                     <th>Réalisateur</th>
                     <th>Date de Création</th>
                     <th>Genre</th>
+<<<<<<< HEAD
                     <th>Actions</th>
+=======
+                    
+>>>>>>> 1296d74575dfb16d24026253d123211ba0b0b4c4
                 </tr>
             </thead>
             <tbody>
@@ -54,10 +66,14 @@
                         echo "<td>" . $row["director"] . "</td>";
                         echo "<td>" . $row["created-at"] . "</td>";
                         echo "<td>" . $row["genre"] . "</td>";
+<<<<<<< HEAD
                         echo "<td>
                                 <button class='edit-btn'>Éditer</button>
                                 <button class='delete-btn'>Supprimer</button>
                               </td>";
+=======
+                       
+>>>>>>> 1296d74575dfb16d24026253d123211ba0b0b4c4
                         echo "</tr>";
                     }
                 } else {
@@ -71,7 +87,10 @@
     </section>
 
     <footer>
+<<<<<<< HEAD
         <p>&copy; 2024 FilmoTeca. Tous droits réservés.</p>
+=======
+>>>>>>> 1296d74575dfb16d24026253d123211ba0b0b4c4
     </footer>
 
 </body>
