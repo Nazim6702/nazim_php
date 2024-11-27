@@ -1,60 +1,29 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Controller;
 
-use App\Entity\Film;
 use App\Repository\FilmRepository;
+use Twig\Environment;
 
 class FilmController
 {
-    public function list(array $queryParams)
+    private $filmRepository;
+    private $twig;
+
+    public function __construct(FilmRepository $filmRepository, Environment $twig)
     {
-        $filmRepository = new FilmRepository();
-        $films = $filmRepository->findAll();
-
-        /* $filmEntities = [];
-        foreach ($films as $film) {
-            $filmEntity = new Film();
-            $filmEntity->setId($film['id']);
-            $filmEntity->setTitle($film['title']);
-            $filmEntity->setYear($film['year']);
-            $filmEntity->setType($film['type']);
-            $filmEntity->setSynopsis($film['synopsis']);
-            $filmEntity->setDirector($film['director']);
-            $filmEntity->setCreatedAt(new \DateTime($film['created_at']));
-            $filmEntity->setUpdatedAt(new \DateTime($film['updated_at']));
-
-            $filmEntities[] = $filmEntity;
-        } */
-
-        dd($films);
-
-        // header('Content-Type: application/json');
-        // echo json_encode($films);
+        $this->filmRepository = $filmRepository;
+        $this->twig = $twig;
     }
 
-    public function create()
+    public function listFilms(): void
     {
-        echo "Création d'un film";
-    }
+        // Récupérer les films depuis le repository
+        $films = $this->filmRepository->findAll();
 
-    public function read(array $queryParams)
-    {
-        $filmRepository = new FilmRepository();
-        $film = $filmRepository->find((int) $queryParams['id']);
-
-        dd($film);
-    }
-
-    public function update()
-    {
-        echo "Mise à jour d'un film";
-    }
-
-    public function delete()
-    {
-        echo "Suppression d'un film";
+        // Afficher la vue Twig
+        echo $this->twig->render('list.html.twig', [
+            'films' => $films,
+        ]);
     }
 }
