@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un film{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h2 class="mb-4 text-center text-warning">Modifier un film</h2>
+
+        <form action="/film/update?id={{ film.id }}" method="post" class="shadow p-4 rounded bg-warning bg-opacity-10">
+            <div class="form-group mb-3">
+                <label for="title" class="form-label fw-bold text-warning">Titre</label>
+                <input type="text" class="form-control border-warning" id="title" name="title" value="{{ film.title }}" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="year" class="form-label fw-bold text-warning">Année</label>
+                <input type="text" class="form-control border-warning" id="year" name="year" value="{{ film.year }}">
+            </div>
+            <div class="form-group mb-3">
+                <label for="type" class="form-label fw-bold text-warning">Type</label>
+                <input type="text" class="form-control border-warning" id="type" name="type" value="{{ film.type }}" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="synopsis" class="form-label fw-bold text-warning">Synopsis</label>
+                <textarea class="form-control border-warning" id="synopsis" name="synopsis" rows="3">{{ film.synopsis }}</textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label for="director" class="form-label fw-bold text-warning">Réalisateur</label>
+                <input type="text" class="form-control border-warning" id="director" name="director" value="{{ film.director }}">
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-warning btn-lg text-white">
+                    <i class="fas fa-save"></i> Enregistrer
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

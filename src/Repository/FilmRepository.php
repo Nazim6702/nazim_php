@@ -52,4 +52,75 @@ class FilmRepository
         // Utilise le service de mappage pour convertir le résultat en objet Film
         return $this->entityMapperService->mapToEntity($film, Film::class);
     }
+
+    
+    
+    
+    public function createFilm(Film $film): void
+    {
+        $params = [
+            ':title' => $film->getTitle(),
+            ':year' => $film->getYear(),
+            ':type' => $film->getType(),
+            ':synopsis' => $film->getSynopsis(),
+            ':director' => $film->getDirector(),
+            ':createdAt' => $film->getCreatedAt()->format('Y-m-d H:i:s'),
+            ':updatedAt' => $film->getUpdatedAt() ? $film->getUpdatedAt()->format('Y-m-d H:i:s') : null,
+        ];
+
+        $sql = <<<SQL
+        INSERT INTO film (title, year, type, synopsis, director, created_at, updated_at)
+        VALUES (:title, :year, :type, :synopsis, :director, :createdAt, :updatedAt)
+        SQL;
+
+        $this->executeQuery($sql, $params);
+    }
+
+    public function updateFilm(Film $film): void
+    {
+        $params = [
+            ':title' => $film->getTitle(),
+            ':year' => $film->getYear(),
+            ':type' => $film->getType(),
+            ':synopsis' => $film->getSynopsis(),
+            ':director' => $film->getDirector(),
+            ':updatedAt' => $film->getUpdatedAt() ? $film->getUpdatedAt()->format('Y-m-d H:i:s') : null,
+            ':id' => $film->getId(),
+        ];
+
+        $sql = <<<SQL
+        UPDATE film
+        SET title = :title,
+            year = :year,
+            type = :type,
+            synopsis = :synopsis,
+            director = :director,
+            updated_at = :updatedAt
+        WHERE id = :id
+        SQL;
+
+        $this->executeQuery($sql, $params);
+    }
+
+    public function deleteFilm(Film $film): void
+    {
+        $params = [':id' => $film->getId()];
+
+        $sql = <<<SQL
+        DELETE FROM film WHERE id = :id
+        SQL;
+
+        $this->executeQuery($sql, $params);
+    }
+
+    private function executeQuery(string $sql, array $params): void
+    {
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute($params);
+        } catch (\PDOException $e) {
+            throw new \RuntimeException("Erreur SQL : " . $e->getMessage(), 0, $e);
+        }
+    }
+
 }

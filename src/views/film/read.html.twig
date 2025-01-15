@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voir le film{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h2 class="mb-4 text-center text-success">Voir le film</h2>
+
+        <div class="card shadow-lg border-0 rounded">
+            <div class="card-header bg-success text-white text-center">
+                <h3 class="mb-0">{{ film.title }}</h3>
+            </div>
+            <div class="card-body bg-light p-4">
+                <p class="mb-3"><strong>Année :</strong> <span class="text-success">{{ film.year }}</span></p>
+                <p class="mb-3"><strong>Type :</strong> <span class="text-success">{{ film.type }}</span></p>
+                <p class="mb-3"><strong>Réalisateur :</strong> <span class="text-success">{{ film.director }}</span></p>
+                <p class="mb-3"><strong>Synopsis :</strong></p>
+                <blockquote class="blockquote text-success">{{ film.synopsis }}</blockquote>
+                <hr>
+                <p class="mb-3"><strong>Ajouté le :</strong> <span class="text-success">{{ film.createdAt.format('d/m/Y H:i') }}</span></p>
+                <p><strong>Modifié le :</strong> <span class="text-success">{{ film.updatedAt.format('d/m/Y H:i') }}</span></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
